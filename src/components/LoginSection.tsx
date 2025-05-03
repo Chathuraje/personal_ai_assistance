@@ -27,6 +27,7 @@ const LoginSection: React.FC<LoginSectionProps> = ({ username, setUsername, pass
                         value={username}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                         className="w-full"
+                        autoComplete='username'
                     />
                     <Input
                         type="password"
@@ -34,6 +35,7 @@ const LoginSection: React.FC<LoginSectionProps> = ({ username, setUsername, pass
                         value={password}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                         className="w-full"
+                        autoComplete='password'
                     />
                     <Button onClick={handleLogin} className="w-full">
                         Login
