@@ -10,7 +10,7 @@ export interface WebhookResponse {
 
 export async function sendWebhookMessage(data: WebhookData): Promise<WebhookResponse> {
   try {
-    const response = await axios.post('/api/proxyWebhook', data);
+    const response = await axios.post('/api/sendMessage', data);
     console.log('Webhook sent successfully:', response.data);
     return response.data; // Return the data so that you can use it in generateResponse.
   } catch (error) {
