@@ -1,64 +1,50 @@
 # AI Chat Assistant
 
-AI Chat Assistant is a lightweight, web-based conversational tool that I developed using a **React** frontend and an **n8n** workflow backend. It allows users to interact with an AI model through a clean, responsive chat interface, while all backend processing and AI integration are handled through automated workflows in n8n.
+AI Chat Assistant is a lightweight, web-based conversational tool built with a **Next.js** frontend and an **n8n** workflow backend. It allows users to interact with an AI model through a clean, responsive chat interface powered by **shadcn/ui** components, while all backend processing and AI integration are handled through automated workflows in n8n.
 
 ## Overview
 
-- **Frontend**: Built with **React** for a seamless and dynamic chat experience.
+- **Frontend**: Built with **Next.js** and **shadcn/ui** for a seamless and accessible chat experience.
 - **Backend**: Developed using **n8n** for API communication, automation, and response handling.
 - **AI Integration**: Connected to [OpenAI API](https://platform.openai.com/) for generating intelligent, human-like responses.
-- **Hosting**: Designed for easy deployment across cloud platforms.
+- **Hosting**: Designed for easy deployment across cloud platforms like Vercel.
 
 ---
 
 ## Key Features
 
-- **Real-time AI Chat**: Users can send and receive AI-generated responses instantly.
-- **Modular Backend**: The n8n workflow was designed to be easily extendable for additional features like authentication, logging, or advanced AI prompts.
-- **Simple Configuration**: Environment-based configuration for switching between development and production environments.
-- **Lightweight and Scalable**: Minimalistic setup that can be expanded as needed.
+- **Real-time AI Chat**: Users send and receive AI-generated responses instantly via a smooth chat UI.
+- **Modular Backend**: The n8n workflow is easily extendable for features like authentication, logging, or advanced AI prompts.
+- **Simple Configuration**: Environment-based configuration supports development and production switching.
+- **Modern UI**: Built with **shadcn/ui** components for a polished, accessible design.
+- **Scalable and Lightweight**: Minimal initial setup with plenty of room for expansion.
 
 ---
 
 ## Technologies Used
 
-| Layer      | Technology                         |
-| ---------- | ---------------------------------- |
-| Frontend   | React, Axios                       |
-| Backend    | n8n (low-code workflows)           |
-| AI Service | OpenAI API / Custom API            |
-| Deployment | Vercel / n8n (self hosted-backend) |
+| Layer      | Technology                            |
+| ---------- | ------------------------------------- |
+| Frontend   | Next.js, TypeScript, Axios, shadcn/ui |
+| Backend    | n8n (low-code workflows)              |
+| AI Service | OpenAI API / Custom API               |
+| Deployment | Vercel / n8n (self-hosted backend)    |
 
 ---
 
 ## How It Works
 
-1. The **user** sends a message through the React chat UI.
-2. The **frontend** makes a POST request to an **n8n webhook**.
-3. The **n8n workflow** forwards the message to the AI API, retrieves the response, formats it, and sends it back.
-4. The **frontend** displays the AI's response in real-time.
-
----
-
-## Project Structure
-
-```
-/frontend
-  ├── src/
-  │   ├── components/ (Chat UI)
-  │   ├── services/ (API handler)
-  │   ├── App.jsx
-  │   └── index.js
-/backend
-  ├── workflows/
-      ├── AI Chat Webhook Workflow.json
-```
+1. The **user** sends a message through the Next.js chat interface.
+2. The **frontend** sends a POST request to an **internal API route**.
+3. The API route forwards the message to the **n8n webhook**.
+4. The **n8n workflow** sends the prompt to the AI API, retrieves the response, formats it, and sends it back.
+5. The API route returns the AI's response to the frontend, and the chat UI displays it in real-time.
 
 ---
 
 ## Setup and Deployment
 
-### Frontend
+### Frontend (Next.js)
 
 1. Navigate to the frontend folder:
 
@@ -74,28 +60,28 @@ npm install
 
 3. Configure environment variables:
 
-Create a `.env` file:
+Create a `.env.local` file:
 
 ```
-REACT_APP_N8N_ENDPOINT=https://your-n8n-domain.com/webhook/chat
+NEXT_PUBLIC_N8N_ENDPOINT=https://your-n8n-domain.com/webhook/chat
 ```
 
 4. Run the app locally:
 
 ```bash
-npm start
+npm run dev
 ```
 
-5. Deploy to platforms like **Vercel** or **Netlify** for production.
+5. Deploy to **Vercel** (best with Next.js).
 
 ---
 
 ### Backend (n8n)
 
 1. Set up an **n8n Webhook** node to accept incoming chat messages.
-2. Use an **HTTP Request** node to forward the input to the AI API.
-3. Use a **Set** node to format the AI’s response.
-4. Return the response to the frontend through the Webhook.
+2. Use an **HTTP Request** node to forward input to the AI API.
+3. Format the AI's response using a **Set** node.
+4. Return the AI response back to the frontend.
 
 Sample Workflow:
 
@@ -107,22 +93,21 @@ Sample Workflow:
 
 ## Possible Extensions
 
-- User authentication and session management
-- Multi-turn conversation context
-- Analytics and chat history logging
-- Integration with other AI providers
-- Admin panel for monitoring and moderation
+- User authentication with NextAuth.js
+- Maintain multi-turn conversation context
+- Chat history and analytics dashboard
+- Connect with other AI models (Claude, Gemini, etc.)
+- Admin panel for chat monitoring/moderation
 
 ---
 
 ## License
 
 This project is licensed under the **MIT License**.
-Feel free to use, modify, and enhance it as per your needs.
+You are free to use, modify, and enhance it as needed.
 
 ---
 
 ## About Me
 
-I'm passionate about building automation-driven and AI-powered products.
-This project demonstrates how **low-code** backend workflows and **modern frontend frameworks** can create fast, scalable, and powerful applications.
+I'm passionate about building automation-driven, AI-powered products.
